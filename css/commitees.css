@@ -1,0 +1,263 @@
+/* =====================
+   COMMITTEES SECTION
+===================== */
+.committees-section {
+  position: relative;
+  padding: 140px 40px 160px;
+  background: radial-gradient(
+    circle at top,
+    #2b0f2d 0%,
+    #0b0614 55%,
+    #05030a 100%
+  );
+  overflow: hidden;
+}
+
+.committees-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(255, 80, 150, 0.12), transparent 55%),
+    rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+.committees-title {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #ffffff;
+  margin-bottom: 80px;
+}
+
+/* =====================
+   GRID
+===================== */
+.committees-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 70px 50px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* =====================
+   CARD
+===================== */
+.committee-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.committee-card img {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 14px;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.85),
+    0 0 80px rgba(255, 90, 170, 0.15);
+}
+
+/* =====================
+   BUTTON
+===================== */
+.committee-btn {
+  margin-top: 26px;
+  padding: 16px 48px;
+  border-radius: 50px;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  color: #ffffff;
+  text-decoration: none;
+  background: linear-gradient(90deg, #7a2c52, #8d365e);
+
+  box-shadow:
+    0 12px 30px rgba(255, 90, 170, 0.35);
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.committee-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 18px 50px rgba(255, 90, 170, 0.6);
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 1100px) {
+  .committees-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .committees-title {
+    font-size: 2.3rem;
+  }
+
+  .committees-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+/* ================= COMMITTEE MODAL BACKDROP ================= */
+.committee-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 15, 0.85);
+  backdrop-filter: blur(10px);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+/* SHOW MODAL */
+.committee-modal.active {
+  display: flex;
+}
+
+/* ================= MODAL BOX ================= */
+.committee-modal-content {
+  width: 92%;
+  max-width: 1100px;
+
+  max-height: 90vh;               /* 🔥 critical */
+  overflow-y: auto;               /* 🔥 critical */
+  -webkit-overflow-scrolling: touch;
+
+  background: radial-gradient(
+    circle at top left,
+    #2a1635 0%,
+    #0b0612 75%
+  );
+
+  border-radius: 22px;
+  padding: 48px;
+
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 48px;
+
+  color: #ffffff;
+  position: relative;
+}
+
+/* ================= CLOSE BUTTON ================= */
+.committee-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+
+  font-size: 32px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* ================= LEFT COLUMN ================= */
+.committee-logo {
+  width: 700px;        /* 🔥 increase logo size */
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.committee-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+
+.committee-tags span {
+  display: inline-block;
+  background: #8d3a5d;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+.committee-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ⬅ centers content horizontally */
+  text-align: center;    /* ⬅ centers text under logo */
+}
+
+
+/* ================= RIGHT COLUMN ================= */
+.committee-right p {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 900px) {
+  .committee-modal {
+    align-items: flex-start;      /* 🔥 important for mobile */
+  }
+
+  .committee-modal-content {
+    margin-top: 24px;
+    max-height: 88vh;
+    grid-template-columns: 1fr;
+    padding: 26px 20px;
+  }
+
+  .committee-logo {
+    width: 400px;                 /* still big on phone */
+  }
+
+  .committee-name {
+    font-size: 2rem;
+  }
+
+  .committee-right p {
+    font-size: 0.95rem;
+  }
+}
+
+.committees-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px;
+}
+
+.committee-card {
+  width: calc(33.333% - 32px);
+}
+
+@media (max-width: 640px) {
+  .committees-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .committee-card {
+    width: 100%;
+  }
+}
+

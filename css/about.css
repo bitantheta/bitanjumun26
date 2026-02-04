@@ -1,0 +1,66 @@
+/* =====================
+   ABOUT SECTION (MINIMAL, GUARANTEED)
+===================== */
+.about-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  background: url("../assets/images/about-bg.png") center / cover no-repeat;
+
+  padding: 120px 24px;
+  color: #ffffff;
+}
+
+/* =====================
+   OVERLAY (OPTIONAL BUT SAFE)
+===================== */
+.about-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 5, 20, 0.1);
+  z-index: 1;
+}
+
+/* =====================
+   CONTENT
+===================== */
+.about-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =====================
+   TEXT
+===================== */
+.about-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #ff8bb3;
+  margin-bottom: 12px;
+}
+
+.about-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ff9fc8;
+  margin-bottom: 32px;
+}
+
+.about-content p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-section {
+  filter: contrast(1.05) saturate(1.1);
+}

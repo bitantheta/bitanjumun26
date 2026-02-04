@@ -1,0 +1,57 @@
+/* =====================
+   GLOBAL RESET
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background-color: #27103a;
+  color: #ffffff;
+}
+
+/* =====================
+   ROOT VARIABLES
+===================== */
+:root {
+  --primary-pink: #e94b7f;
+  --primary-purple: #7a4bc2;
+  --text-light: #eaeaea;
+  --text-muted: #b5b5b5;
+}
+
+/* =====================
+   LINKS
+===================== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =====================
+   BUTTON BASE
+===================== */
+.cta-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: 40px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-pink),
+    var(--primary-purple)
+  );
+  color: #fff;
+  box-shadow: 0 0 20px rgba(233, 75, 127, 0.4);
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(233, 75, 127, 0.7);
+}
