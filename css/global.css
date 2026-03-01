@@ -55,3 +55,46 @@ a {
   transform: translateY(-2px);
   box-shadow: 0 0 35px rgba(233, 75, 127, 0.7);
 }
+
+/* ================= INTRO SCREEN ================= */
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  background: #0b0614;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  transition: transform 1.2s ease-in-out;
+}
+
+.intro-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(36px, 6vw, 90px);
+  font-weight: 800;
+  display: flex;
+  gap: 12px;
+}
+
+/* APPLY GRADIENT HERE */
+.intro-word {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: smoothReveal 0.8s forwards ease;
+
+  background: linear-gradient(90deg, #ff6f9f, #a77bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes smoothReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro-screen.slide-out {
+  transform: translateY(-100%);
+}

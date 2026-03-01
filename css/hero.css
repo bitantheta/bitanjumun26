@@ -4,21 +4,27 @@ html, body {
 }
 
 /* =====================
-   HERO SECTION
+   HERO SECTION (UPDATED RESPONSIVE)
 ===================== */
 .hero {
   position: relative;
-  height: 100vh;
+
+  min-height: 100dvh;
+  height: 100dvh;
+
   width: 100%;
 
   background-image: url("../assets/images/hero-bg.png");
   background-size: cover;
-  background-position: center 35%;
+  background-position: center;
   background-repeat: no-repeat;
 
-  overflow: visible;
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  overflow: hidden;
+}
 
 /* =====================
    HERO CONTENT
@@ -30,16 +36,12 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
 
-  padding-top: 44vh;
-  padding-left: 20px;
-  padding-right: 20px;
+
 }
 
-
 /* =====================
-   TITLE
+   TITLE (UNCHANGED)
 ===================== */
 .hero-title {
   font-size: 2.4rem;
@@ -60,27 +62,112 @@ html, body {
 }
 
 
+
+
+
 /* =====================
-   DATE
+   LOGO STACK (UPDATED)
 ===================== */
-.hero-date {
-  margin: 20px 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  font-size: 1.1rem;
-  color: var(--text-muted);
+.hero-logo-wrapper {
+  position: relative;
+  width: clamp(300px, 200vw, 1100px);
 }
 
-.hero-date img {
-  width: 22px;
-  opacity: 0.9;
+/* =========================
+   DATE + BUTTON OVERLAY
+========================= */
+
+.hero-overlay-content {
+  position: absolute;
+
+  left: 50%;
+  transform: translate(-50%, 50%);
+
+  bottom: 0;   /* anchor to bottom of wrapper */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 18px;
+  text-align: center;
+}
+
+/* Date */
+.hero-date-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  color: #9a123f;
+}
+
+/* Button tweak */
+.hero-cta {
+  padding: 16px 60px;
+}
+
+
+.hero-logo-bg,
+.hero-logo {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.hero-logo-bg { z-index: 1; }
+.hero-logo    { z-index: 2; }
+
+.hero-logo {
+  display: block;
+}
+
+/* =====================
+   CTA BUTTON (FLOW fBASED)
+===================== */
+.hero-cta {
+  font-family: 'Montserrat', sans-serif;
+
+  padding: 18px 64px;
+  border-radius: 60px;
+
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  color: #ffffff;
+  background: linear-gradient(90deg, #e44369, #e44369);
+
+  box-shadow:
+    0 10px 35px rgba(255, 79, 139, 0.55),
+    0 0 60px rgba(255, 79, 139, 0.6);
+
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 15px 50px rgba(255, 79, 139, 0.8),
+    0 0 90px rgba(255, 79, 139, 0.8);
 }
 
 
 /* =====================
-   MOBILE FIX (CRITICAL)
+   DATE TEXT (NOW FLOW BASED)
+===================== */
+.hero-date-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: 600;
+  color:  #e44369;
+
+  white-space: nowrap;
+}
+
+
+/* =====================
+   MOBILE FIX (UNCHANGED BLOCK)
 ===================== */
 @media (max-width: 768px) {
   .about-container {
@@ -111,138 +198,74 @@ html, body {
   }
 }
 
+@media (max-width: 768px) {
 
-/* =====================
-   LOGO STACK (BG + EMBLEM)
-===================== */
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-logo-wrapper {
+    position: relative;
+    width: 300vw;
+    max-width: 800px;
+  }
+
+  /* 🔥 REMOVE OVERLAY LOGIC ON MOBILE */
+  .hero-overlay-content {
+    position: static;       /* no absolute */
+    transform: none;
+    margin-top: 5px;
+  }
+
+  .hero-date-text {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .hero-cta {
+    width: 90%;
+    max-width: 300px;
+    padding: 14px 20px;
+    font-size: 15px;
+    margin: 14px auto 0 auto;
+    white-space: normal;
+  }
+
+}
+
 .hero-logo-wrapper {
-  position: absolute;
-  left: 50%;
-  bottom: -140vh;
-  transform: translateX(-50%);
-
-  width: 2000px;
-  max-width: 85vw;
-
-  padding-top: 100%;  
-
-  z-index: 3;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: all 1.2s cubic-bezier(.77,0,.18,1);
 }
 
-.hero-logo-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: 30%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.795) 15%,
-    transparent 72%
-  );
-  filter: blur(28px);
-  pointer-events: none;
-  z-index: 0;
+.hero-logo-wrapper.reveal {
+  opacity: 1;
+  transform: scale(1);
 }
 
-.hero-logo-wrapper::before {
-  transform: translateY(-80%);
-}
-
-
-.hero-logo-bg,
 .hero-logo {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: auto;
+  display: block;
+
+  -webkit-mask-image: linear-gradient(to bottom, 
+      rgba(0,0,0,0) 0%, 
+      rgba(0,0,0,1) 25%
+  );
+  mask-image: linear-gradient(to bottom, 
+      rgba(0,0,0,0) 0%, 
+      rgba(0,0,0,1) 25%
+  );
 }
 
-.hero-logo-bg { z-index: 1; }
-.hero-logo    { z-index: 2; }
-
-@media (max-width: 900px) {
-  .hero-logo-wrapper {
-    bottom: -20vh;
-    width: 200vw;
-    max-width: none;
-  }
+.hero {
+  animation: bgDrift 20s ease-in-out infinite alternate;
 }
 
-
-/* =====================
-   CTA BUTTON (FINAL — SINGLE SOURCE OF TRUTH)
-===================== */
-.hero-cta {
-  font-family: 'Montserrat', sans-serif;
-  position: absolute;
-  left: 50%;
-  bottom: -40vh;              /* desktop position */
-  transform: translateX(-50%);
-
-  padding: 18px 64px;
-  border-radius: 60px;
-
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-
-  color: #ffffff;
-  background: linear-gradient(90deg, #e44369, #e44369);
-
-  box-shadow:
-    0 10px 35px rgba(255, 79, 139, 0.55),
-    0 0 60px rgba(255, 79, 139, 0.6);
-
-  z-index: 4;
-  transition: all 0.3s ease;
+@keyframes bgDrift {
+  0% { background-position: center; }
+  100% { background-position: center 5%; }
 }
-
-.hero-cta:hover {
-  transform: translateX(-50%) translateY(-3px);
-  box-shadow:
-    0 15px 50px rgba(255, 79, 139, 0.8),
-    0 0 90px rgba(255, 79, 139, 0.8);
-}
-
-@media (max-width: 900px) {
-  .hero-cta {
-    bottom: -25vh;            /* mobile position */
-    padding: 16px 36px;
-    font-size: 1.1rem;
-  }
-}
-
-.hero-date-text {
-  position: absolute;
-
-  left: 40%;        /* horizontal alignment near calendar */
-  bottom: 63.6%;     /* vertical alignment */
-
-  font-family: 'Montserrat', sans-serif;
-  font-size: 50px;
-  font-weight: 600;
-  color: #ff6f9f;
-
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 5;
-}
-@media (max-width: 900px) {
-  .hero-date-text {
-    left: 40%;
-    bottom: 15.5%;
-    font-size: 30px;
-  }
-}
-
-
-@media (max-width: 900px) {
-  .hero-logo-wrapper::before {
-    inset: 25%;              /* 👈 bigger glow area */
-    filter: blur(26px);       /* 👈 softer & larger */
-    transform: translateY(-15%);  /* 👈 moves glow UP on mobile */
-  }
-}
-
-
-
-
