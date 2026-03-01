@@ -70,7 +70,7 @@ html, body {
 ===================== */
 .hero-logo-wrapper {
   position: relative;
-  width: clamp(300px, 200vw, 1100px);
+  width: clamp(300px, 80vw, 1100px);
 }
 
 /* =========================
@@ -79,20 +79,18 @@ html, body {
 
 .hero-overlay-content {
   position: absolute;
-
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translateX(-50%);
 
-  bottom: 0;   /* anchor to bottom of wrapper */
-
+  top: 80%;          /* 🔥 controls distance from top of logo */
+  
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  gap: 18px;
+  gap: 8px;          /* controls spacing between date and button */
   text-align: center;
 }
-
 /* Date */
 .hero-date-text {
   font-family: 'Montserrat', sans-serif;
@@ -216,7 +214,6 @@ html, body {
   .hero-overlay-content {
     position: static;       /* no absolute */
     transform: none;
-    margin-top: 5px;
   }
 
   .hero-date-text {
@@ -246,6 +243,37 @@ html, body {
   transform: scale(1);
 }
 
+@media (max-width: 768px) {
+
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-logo-wrapper {
+    position: relative;
+    width: 200vw;         /* responsive and stable */
+    max-width: 700px;
+  }
+
+  .hero-overlay-content {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 80%;            /* 🔥 controls gap from logo */
+    gap: 6px;
+  }
+
+  .hero-cta {
+    width: 85%;
+    max-width: 280px;
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+
+}
+
 .hero-logo {
   width: 100%;
   height: auto;
@@ -269,3 +297,4 @@ html, body {
   0% { background-position: center; }
   100% { background-position: center 5%; }
 }
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon | JUMUN 2026</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <link rel="stylesheet" href="css/global.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0b0614;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+    }
+
+    .coming-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 0 20px;     /* 🔥 fixes mobile overflow */
+  max-width: 600px;
+}
+
+    .coming-title {
+      font-size: clamp(40px, 6vw, 90px);
+      font-weight: 800;
+
+      background: linear-gradient(90deg, #ff6f9f, #a77bff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .coming-subtitle {
+  font-size: clamp(16px, 2vw, 22px);
+  color: #ffffff;
+  opacity: 0.7;
+
+  line-height: 1.5;     /* better readability */
+  word-wrap: break-word;
+}
+    .back-btn {
+      margin-top: 20px;
+      padding: 14px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(90deg, #e44369, #a77bff);
+      transition: 0.3s ease;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="coming-wrapper">
+    <div class="coming-title">COMING SOON</div>
+    <div class="coming-subtitle">
+      Please keep checking our website for more updates regarding JUMUN 2026
+    </div>
+    <a href="index.html" class="back-btn">Back to Home</a>
+  </div>
+
+</body>
+</html>

@@ -30,6 +30,9 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 3rem;
   margin-bottom: 70px;
+   background: #ff8bb3;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* GRID */
@@ -41,25 +44,65 @@
 }
 
 /* LEFT */
-.contact-text {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  margin-bottom: 40px;
+/* INTRO TEXT */
+.contact-intro {
+  margin-bottom: 50px;
 }
 
-.contact-subheading {
+.contact-intro p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+}
+
+.contact-highlight {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #ff8bb3;
+}
+
+/* PHONE HEADING */
+.contact-heading {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.4rem;
-  margin-bottom: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  color: #ffffff;
 }
 
-.contact-left p {
-  margin-bottom: 18px;
-  line-height: 1.6;
+/* PERSON BLOCK */
+.contact-person {
+  margin-bottom: 35px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.contact-left span {
-  opacity: 0.75;
+/* NAME + NUMBER ROW */
+.contact-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* NAME */
+.contact-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #ff6f9f;
+}
+
+/* NUMBER */
+.contact-number {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.9);
+}
+
+/* ROLE */
+.contact-role {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.6);
 }
 
 /* FORM */
@@ -140,4 +183,17 @@
 .contact-form input:focus,
 .contact-form textarea:focus {
   box-shadow: 0 0 0 2px #ff6f9f inset;
+}
+@media (max-width: 900px) {
+
+  .contact-name-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .contact-number {
+    font-size: 0.95rem;
+  }
+
 }
