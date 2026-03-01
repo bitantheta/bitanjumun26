@@ -1,73 +1,88 @@
-/* =====================
+/* ===============================
    COMMITTEES SECTION
-===================== */
+================================= */
+
 .committees-section {
   position: relative;
-  padding: 140px 40px 160px;
-  background: radial-gradient(
-    circle at top,
-    #2b0f2d 0%,
-    #0b0614 55%,
-    #05030a 100%
-  );
-  overflow: hidden;
+  width: 100%;
+  padding: 120px 20px;
+
+  background-image: url("../assets/images/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+/* Overlay */
 .committees-overlay {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at center, rgba(255, 80, 150, 0.12), transparent 55%),
-    rgba(0, 0, 0, 0.65);
+  background: rgba(5, 5, 15, 0.75);
   z-index: 1;
 }
 
+/* Title */
 .committees-title {
   position: relative;
   z-index: 2;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 800;
   letter-spacing: 3px;
   color: #ff8bb3;
   margin-bottom: 80px;
 }
 
-/* =====================
-   GRID
-===================== */
+/* ===============================
+   GRID (FLEX BASED)
+================================= */
+
 .committees-grid {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 70px 50px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+
   max-width: 1300px;
   margin: 0 auto;
 }
 
-/* =====================
+/* ===============================
    CARD
-===================== */
+================================= */
+
 .committee-card {
+  width: 360px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Committee Image */
 .committee-card img {
   width: 100%;
   max-width: 340px;
   border-radius: 14px;
+
   box-shadow:
     0 25px 80px rgba(0, 0, 0, 0.85),
-    0 0 80px rgba(255, 90, 170, 0.15);
+    0 0 60px rgba(255, 90, 170, 0.2);
+
+  transition: transform 0.3s ease;
 }
 
-/* =====================
+.committee-card img:hover {
+  transform: translateY(-6px);
+}
+
+/* ===============================
    BUTTON
-===================== */
+================================= */
+
 .committee-btn {
   margin-top: 26px;
   padding: 16px 48px;
@@ -85,9 +100,10 @@
   box-shadow:
     0 12px 30px rgba(255, 90, 170, 0.35);
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+
   transition: all 0.3s ease;
 }
 
@@ -97,27 +113,10 @@
     0 18px 50px rgba(255, 90, 170, 0.6);
 }
 
-/* =====================
-   RESPONSIVE
-===================== */
-@media (max-width: 1100px) {
-  .committees-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+/* ===============================
+   MODAL BACKDROP
+================================= */
 
-@media (max-width: 640px) {
-  .committees-title {
-    font-size: 2.3rem;
-  }
-
-  .committees-grid {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-}
-
-/* ================= COMMITTEE MODAL BACKDROP ================= */
 .committee-modal {
   position: fixed;
   inset: 0;
@@ -131,19 +130,20 @@
   z-index: 9999;
 }
 
-/* SHOW MODAL */
 .committee-modal.active {
   display: flex;
 }
 
-/* ================= MODAL BOX ================= */
+/* ===============================
+   MODAL BOX
+================================= */
+
 .committee-modal-content {
   width: 92%;
   max-width: 1100px;
 
-  max-height: 90vh;               /* 🔥 critical */
-  overflow-y: auto;               /* 🔥 critical */
-  -webkit-overflow-scrolling: touch;
+  max-height: 90vh;
+  overflow-y: auto;
 
   background: radial-gradient(
     circle at top left,
@@ -162,7 +162,7 @@
   position: relative;
 }
 
-/* ================= CLOSE BUTTON ================= */
+/* Close Button */
 .committee-close {
   position: absolute;
   top: 18px;
@@ -175,37 +175,44 @@
   cursor: pointer;
 }
 
-/* ================= LEFT COLUMN ================= */
+/* ===============================
+   MODAL LEFT COLUMN
+================================= */
+
+.committee-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .committee-logo {
-  width: 700px;        /* 🔥 increase logo size */
-  max-width: 100%;
-  margin-bottom: 10px;
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 24px;
 }
 
 .committee-name {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.4rem;
-  margin-bottom: 20px;
+  font-size: 2.3rem;
+  margin-bottom: 24px;
 }
 
+/* Tags */
 .committee-tags span {
   display: inline-block;
   background: #8d3a5d;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 999px;
   font-size: 0.95rem;
-  margin-right: 12px;
-  margin-bottom: 12px;
-}
-.committee-left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;   /* ⬅ centers content horizontally */
-  text-align: center;    /* ⬅ centers text under logo */
+  margin: 6px;
 }
 
+/* ===============================
+   MODAL RIGHT COLUMN
+================================= */
 
-/* ================= RIGHT COLUMN ================= */
 .committee-right p {
   font-family: 'Poppins', sans-serif;
   line-height: 1.8;
@@ -213,21 +220,24 @@
   margin-bottom: 18px;
 }
 
-/* ================= MOBILE FIX ================= */
+/* ===============================
+   RESPONSIVE
+================================= */
+
 @media (max-width: 900px) {
+
   .committee-modal {
-    align-items: flex-start;      /* 🔥 important for mobile */
+    align-items: flex-start;
   }
 
   .committee-modal-content {
     margin-top: 24px;
-    max-height: 88vh;
     grid-template-columns: 1fr;
     padding: 26px 20px;
   }
 
   .committee-logo {
-    width: 400px;                 /* still big on phone */
+    max-width: 300px;
   }
 
   .committee-name {
@@ -237,38 +247,18 @@
   .committee-right p {
     font-size: 0.95rem;
   }
-}
 
-.committees-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 48px;
-}
-
-.committee-card {
-  width: calc(33.333% - 32px);
 }
 
 @media (max-width: 640px) {
-  .committees-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
 
   .committee-card {
     width: 100%;
+    max-width: 420px;
   }
-}
 
-.committees-section {
-  position: relative;
-  width: 100%;
+  .committees-title {
+    font-size: 2.2rem;
+  }
 
-  background-image: url("../assets/images/hero-bg.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  padding: 100px 20px;   /* adjust as needed */
 }

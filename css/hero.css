@@ -298,3 +298,12 @@ html, body {
   100% { background-position: center 5%; }
 }
 
+.hero-overlay-content {
+  position: absolute;
+  z-index: 5;   /* make sure button is on top */
+}
+
+.hero-cta {
+  position: relative;
+  z-index: 6;
+}
