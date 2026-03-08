@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/commitees.css" />
   <link rel="stylesheet" href="css/secretariat.css" />
   <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/blogs.css" />
 
   <!-- Google Fonts (you can change later) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +40,7 @@
     <a href="#committees">Committees</a>
     <a href="coming-soon.html">Secretariat</a>
     <a href="coming-soon.html">Resources</a>
-    <a href="coming-soon.html">Blogs</a>
+    <a href="#blogs">Blogs</a>
     <a href="#contact">Contact Us</a>
   </div>
 
@@ -58,7 +59,7 @@
   <a href="#committees">Committees</a>
   <a href="coming-soon.html">Secretariat</a>
   <a href="coming-soon.html">Resources</a>
-  <a href="coming-soon.html">Blogs</a>
+  <a href="#blogs">Blogs</a>
   <a href="#contact">Contact Us</a>
 </div>
 
@@ -288,6 +289,101 @@ The UNODC in JUMUN 2026 requires a nuanced understanding of the complex social, 
 </div>
 
 
+<!-- ================= BLOG SECTION ================= -->
+<section class="blogs-section" id="blogs">
+
+  <h2 class="blogs-title">BLOGS</h2>
+
+  <div class="blogs-grid">
+
+    <div class="blog-card">
+
+      <img src="assets/images/blog1.jpg" alt="Blog Cover">
+
+      <div class="blog-info">
+
+        <h3>Weaponization of Women's Bodies in Conflict Zones</h3>
+
+        <p>
+        The use of Sexual Violence as a tool for War.
+        </p>
+
+        <a href="#" class="blog-btn" data-blog="blog1">
+          READ ENTIRE BLOG ↗
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<div style="display:none">
+
+  <div id="blog1-content"
+       data-title="Weaponization of Women's Bodies in Conflict Zones">
+
+    <p>
+      In modern warfare, the map of a conflict is often drawn not just across territories, but across the bodies of women and girls. Standing in 2026, the global community continues to grapple with a grim reality. Conflict-Related Sexual Violence (CRSV) is no longer viewed by experts as an accidental byproduct of chaos. Instead, it has evolved into a calculated, cost-effective military strategy designed to fracture the social fabric of "enemy" populations.
+    </p>
+    <p>
+    The use of sexual violence as a tool of war is a recurring historical pattern that transcends geography. From the 1994 Genocide against the Tutsi in Rwanda, where an estimated 250,000 to 500,000 women were raped, to contemporary crises, the objective remains the same: the total degradation of a community's identity.
+    </p>
+    <p>
+    By targeting women, armed groups strike at the heart of societal "honour" and domestic stability.This tactic achieves what traditional artillery cannot; it displaces populations through terror, alters ethnic compositions via forced pregnancy, and ensures long-term instability through intergenerational trauma and social marginalisation. It effectively turns personal bodies into symbolic territory, creating deep-seated psychological and physical trauma that persists long after the active fighting concludes.
+    </p>
+    <p>
+    The scale of this issue remains alarmingly high, though verified figures are widely considered to be the "tip of the iceberg" due to extreme underreporting caused by stigma, fear of retaliation, and the collapse of local justice systems.
+    </p>
+    <p>
+    The Democratic Republic of Congo (DRC), which is often cited as one of the most dangerous places to be a woman, reports have indicated that roughly 48 women are raped every hour in the country. In the eastern regions, sexual violence is frequently used by militias to exert control over mineral-rich territories.
+    </p>
+    <p>
+    In Sudan and South Sudan, UN reports have documented the systematic abduction of women and school-aged girls. In recent escalations, over 100 cases of sexual violence were verified in a single month in Darfur, though actual numbers are believed to be significantly higher due to underreporting.
+    </p>
+    <p>
+    In Gaza, UN investigations have highlighted allegations of public stripping and sexual assault during military operations. Similarly, in Ukraine, international monitors have documented hundreds of cases of sexual violence used as a method of psychological warfare against civilians.
+    </p>
+    <p>
+    The effectiveness of CRSV as a weapon relies heavily on the collapse of justice. When the perpetrators are the de facto authorities, as seen with the Taliban in Afghanistan or various paramilitary groups in the Global South, survivors are forced into a choice between life and dignity.
+    </p>
+    <p>
+    Furthermore, the World Health Organization (WHO) estimates that nearly one in three women worldwide has been subjected to physical or sexual violence. In conflict zones, this ratio spikes, yet the "shame" often associated with these crimes leads to a culture of internal silence, shielding the aggressors from international accountability.
+    </p>
+    <p>
+    Despite international frameworks intended to categorize CRSV as war crimes, crimes against humanity, and acts of genocide, the financial and political commitment to preventing these acts remains inadequate. Reports indicate that while global military expenditure reached record highs, surpassing $2.7 trillion in 2024, the funding directed toward women-led organizations and frontline support groups in conflict zones remains a fraction of the necessary aid, often dropping below 0.5% of total humanitarian assistance.
+    </p>
+    <p>
+    The current global approach, which often treats CRSV as an "unfortunate" side effect of war, is increasingly viewed as a failure. For security to be genuine, it must move beyond traditional military definitions and prioritize the safety of women. As the United Nations Commission on the Status of Women (CSW) and other international bodies convene, there is a growing push to move beyond "protection rhetoric." Experts argue that as long as women’s bodies are treated as symbolic territory to be conquered, they will remain primary targets.
+    </p>
+    <p>
+    True peace requires a shift in how the global order conceptualizes security. It is no longer enough to track the movement of tanks and missiles; the international community must account for the politics of body and control. Until CRSV is treated with the same gravity as chemical warfare or territorial annexation, the narratives of global progress will remain incomplete for those living on the silent frontlines.
+    </p>
+    <p>
+    Ending with a question, "If a single chemical weapon attack triggers immediate global outrage and international intervention, why does the systematic, strategic weaponization of thousands of women’s bodies, a tactic that destroys generations more effectively than any nerve agent remain treated by the global security order as an 'unfortunate' side effect of war rather than a red line for humanity?"
+    </p>
+
+  </div>
+
+</div>
+
+<div class="blog-modal" id="blogModal">
+
+  <div class="blog-modal-content">
+
+    <button class="blog-close" id="closeBlog">&times;</button>
+
+    <h2 id="blogTitle"></h2>
+
+    <div id="blogText"></div>
+
+  </div>
+
+</div>
+
+
 
 
 <!-- ================= CONTACT SECTION ================= -->
@@ -391,6 +487,42 @@ closeBtn.addEventListener("click", () => {
 modal.addEventListener("click", e => {
   if (e.target === modal) modal.classList.remove("active");
 });
+</script>
+
+<script>
+
+const blogModal = document.getElementById("blogModal");
+const closeBlog = document.getElementById("closeBlog");
+
+const blogTitle = document.getElementById("blogTitle");
+const blogText = document.getElementById("blogText");
+
+document.querySelectorAll(".blog-btn").forEach(btn => {
+
+  btn.addEventListener("click", e => {
+
+    e.preventDefault();
+
+    const key = btn.dataset.blog;
+    const content = document.getElementById(`${key}-content`);
+
+    blogTitle.textContent = content.dataset.title;
+    blogText.innerHTML = content.innerHTML;
+
+    blogModal.classList.add("active");
+
+  });
+
+});
+
+closeBlog.addEventListener("click", () => {
+  blogModal.classList.remove("active");
+});
+
+blogModal.addEventListener("click", e => {
+  if (e.target === blogModal) blogModal.classList.remove("active");
+});
+
 </script>
 
 
