@@ -14,14 +14,6 @@
   text-align: center;
 }
 
-.blogs-title {
-  font-family: "Montserrat", sans-serif;
-  color: #ff8bb3;
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 80px;
-  letter-spacing: 2px;
-}
 
 /* =====================
    BLOG GRID
@@ -174,6 +166,15 @@
   background: none;
   color: white;
   cursor: pointer;
+}
+
+.blogs-title {
+  font-family: "Montserrat", sans-serif;
+  color: #ff8bb3;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 80px;
+  letter-spacing: 2px;
 }
 
 /* =====================
