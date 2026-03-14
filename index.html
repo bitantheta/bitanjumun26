@@ -819,23 +819,7 @@ resourceModal.addEventListener("click", e => {
   });
 
   document.querySelectorAll(".mobile-menu a").forEach(link => {
-    link.addEventListener("click", event => {
-      const href = link.getAttribute("href");
-      const cleanHref = (href || "").trim().toLowerCase().replace(/\/+$/, "") || "/";
-
-      // Mobile fallback: force clean-route scroll even if generic binder misses once.
-      if (["/", "/about", "/committees", "/resources", "/blogs", "/contact"].includes(cleanHref)) {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-
-        hamburger.classList.remove("active");
-        mobileMenu.classList.remove("active");
-
-        history.pushState({}, "", cleanHref);
-        setTimeout(() => scrollToRoute(cleanHref, "smooth"), 420);
-        return;
-      }
-
+    link.addEventListener("click", () => {
       hamburger.classList.remove("active");
       mobileMenu.classList.remove("active");
     });
@@ -894,41 +878,33 @@ function normalizeRoute(path) {
 }
 
 function scrollToRoute(pathname, behavior = "auto") {
-  const normalizedPath = normalizeRoute(pathname);
-  const sectionId = routeMap[normalizedPath];
+  const route = normalizeRoute(pathname);
+  const sectionId = routeMap[route];
   if (!sectionId) return;
 
   const section = document.getElementById(sectionId);
-  if (section) {
-    const navbarOffset = 84;
-    const sectionTop = Math.max(
-      section.getBoundingClientRect().top + window.pageYOffset - navbarOffset,
-      0
-    );
+  if (!section) return;
 
-    window.scrollTo({ top: sectionTop, behavior });
-
-    // Retry once after smooth-scroll starts for mobile browsers that skip the first call.
-    if (behavior === "smooth") {
-      setTimeout(() => {
-        if (Math.abs(window.pageYOffset - sectionTop) > 8) {
-          window.scrollTo({ top: sectionTop, behavior: "auto" });
-        }
-      }, 500);
-    }
-  }
+  section.scrollIntoView({ behavior, block: "start" });
 }
 
-function bindRouteLinks() {
+function bindCleanRouteLinks() {
   document.querySelectorAll("a[href^='/']").forEach(link => {
     link.addEventListener("click", event => {
       const href = link.getAttribute("href");
-      const normalizedHref = normalizeRoute(href);
-      if (!href || !(normalizedHref in routeMap)) return;
+      const route = normalizeRoute(href);
+
+      if (!(route in routeMap)) return;
 
       event.preventDefault();
-      history.pushState({}, "", normalizedHref);
-      scrollToRoute(normalizedHref, "smooth");
+      history.pushState({}, "", route);
+
+      const clickedFromMobileMenu = !!link.closest(".mobile-menu");
+      if (clickedFromMobileMenu) {
+        setTimeout(() => scrollToRoute(route, "smooth"), 320);
+      } else {
+        scrollToRoute(route, "smooth");
+      }
     });
   });
 }
@@ -938,10 +914,11 @@ window.addEventListener("popstate", () => {
 });
 
 window.addEventListener("load", () => {
-  bindRouteLinks();
+  bindCleanRouteLinks();
   scrollToRoute(window.location.pathname, "auto");
 });
 </script>
+
 </body>
 
 
