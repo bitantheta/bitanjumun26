@@ -819,7 +819,23 @@ resourceModal.addEventListener("click", e => {
   });
 
   document.querySelectorAll(".mobile-menu a").forEach(link => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", event => {
+      const href = link.getAttribute("href");
+      const cleanHref = (href || "").trim().toLowerCase().replace(/\/+$/, "") || "/";
+
+      // Mobile fallback: force clean-route scroll even if generic binder misses once.
+      if (["/", "/about", "/committees", "/resources", "/blogs", "/contact"].includes(cleanHref)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        hamburger.classList.remove("active");
+        mobileMenu.classList.remove("active");
+
+        history.pushState({}, "", cleanHref);
+        setTimeout(() => scrollToRoute(cleanHref, "smooth"), 50);
+        return;
+      }
+
       hamburger.classList.remove("active");
       mobileMenu.classList.remove("active");
     });
