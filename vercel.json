@@ -5,6 +5,7 @@
   "rewrites": [
     { "source": "/about", "destination": "/index.html" },
     { "source": "/committees", "destination": "/index.html" },
+    { "source": "/resources", "destination": "/index.html" },
     { "source": "/blogs", "destination": "/index.html" },
     { "source": "/contact", "destination": "/index.html" },
     { "source": "/coming-soon", "destination": "/coming-soon.html" }

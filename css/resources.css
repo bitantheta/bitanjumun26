@@ -1,0 +1,226 @@
+/* =====================
+   RESOURCES SECTION
+===================== */
+
+.resources-section {
+  position: relative;
+  padding: 100px 40px 140px;
+
+  background-image: url("../assets/images/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  text-align: center;
+}
+
+.resources-title {
+  font-family: "Montserrat", sans-serif;
+  color: #ff8bb3;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 70px;
+  letter-spacing: 2px;
+}
+
+.resources-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.resource-card {
+  width: 380px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.resource-poster {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.resource-info {
+  padding: 26px;
+  text-align: left;
+}
+
+.resource-info h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.resource-info p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.resource-btn {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  transition: opacity 0.3s ease;
+}
+
+.resource-btn:hover {
+  opacity: 0.75;
+}
+
+/* =====================
+   RESOURCE MODAL
+===================== */
+
+.resource-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2100;
+}
+
+.resource-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.resource-modal-content {
+  width: 94%;
+  max-width: 1100px;
+  max-height: 92vh;
+
+  background: radial-gradient(circle at top left, #2a1635 0%, #0b0612 75%);
+  border-radius: 22px;
+  padding: 28px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.resource-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 34px;
+  border: none;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.resource-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-right: 34px;
+}
+
+#resourceTitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.resource-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.resource-action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+
+  transition: all 0.25s ease;
+}
+
+.resource-action-link:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  transform: translateY(-1px);
+}
+
+.resource-frame-wrap {
+  width: 100%;
+  height: min(68vh, 760px);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+#resourceFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.resource-fallback-note {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+  .resources-section {
+    padding: 90px 22px 120px;
+  }
+
+  .resources-title {
+    font-size: 34px;
+    margin-bottom: 45px;
+  }
+
+  .resource-card {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .resource-modal-content {
+    padding: 20px 16px;
+  }
+
+  .resource-modal-head {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-right: 38px;
+  }
+
+  #resourceTitle {
+    font-size: 24px;
+  }
+
+  .resource-frame-wrap {
+    height: 62vh;
+  }
+}
