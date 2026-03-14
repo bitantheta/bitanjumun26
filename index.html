@@ -817,29 +817,6 @@ resourceModal.addEventListener("click", e => {
     hamburger.classList.toggle("active");
     mobileMenu.classList.toggle("active");
   });
-
-  document.querySelectorAll(".mobile-menu a").forEach(link => {
-    link.addEventListener("click", event => {
-      const href = link.getAttribute("href");
-      const cleanHref = (href || "").trim().toLowerCase().replace(/\/+$/, "") || "/";
-
-      // Mobile fallback: force clean-route scroll even if generic binder misses once.
-      if (["/", "/about", "/committees", "/resources", "/blogs", "/contact"].includes(cleanHref)) {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-
-        hamburger.classList.remove("active");
-        mobileMenu.classList.remove("active");
-
-        history.pushState({}, "", cleanHref);
-        setTimeout(() => scrollToRoute(cleanHref, "smooth"), 50);
-        return;
-      }
-
-      hamburger.classList.remove("active");
-      mobileMenu.classList.remove("active");
-    });
-  });
 </script>
 
 <script>
@@ -900,30 +877,64 @@ function scrollToRoute(pathname, behavior = "auto") {
 
   const section = document.getElementById(sectionId);
   if (section) {
-    section.scrollIntoView({ behavior, block: "start" });
+    const navbarOffset = 84;
+    const sectionTop = Math.max(
+      section.getBoundingClientRect().top + window.pageYOffset - navbarOffset,
+      0
+    );
+
+    window.scrollTo({ top: sectionTop, behavior });
+
+    // Retry once after smooth-scroll starts for mobile browsers that skip the first call.
+    if (behavior === "smooth") {
+      setTimeout(() => {
+        if (Math.abs(window.pageYOffset - sectionTop) > 8) {
+          window.scrollTo({ top: sectionTop, behavior: "auto" });
+        }
+      }, 500);
+    }
   }
 }
 
-function bindRouteLinks() {
-  document.querySelectorAll("a[href^='/']").forEach(link => {
-    link.addEventListener("click", event => {
-      const href = link.getAttribute("href");
-      const normalizedHref = normalizeRoute(href);
-      if (!href || !(normalizedHref in routeMap)) return;
+function closeMobileMenuIfOpen() {
+  const hamburger = document.querySelector(".hamburger");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  if (!hamburger || !mobileMenu) return;
 
-      event.preventDefault();
-      history.pushState({}, "", normalizedHref);
-      scrollToRoute(normalizedHref, "smooth");
-    });
-  });
+  hamburger.classList.remove("active");
+  mobileMenu.classList.remove("active");
 }
+
+document.addEventListener("click", event => {
+  const link = event.target.closest("a[href^='/']");
+  if (!link) return;
+
+  const href = link.getAttribute("href");
+  const normalizedHref = normalizeRoute(href);
+  if (!href || !(normalizedHref in routeMap)) return;
+
+  event.preventDefault();
+
+  if (window.location.pathname !== normalizedHref) {
+    history.pushState({}, "", normalizedHref);
+  }
+
+  const clickedFromMobileMenu = !!link.closest(".mobile-menu");
+  closeMobileMenuIfOpen();
+
+  if (clickedFromMobileMenu) {
+    // Wait for menu slide-out so scroll doesn't get swallowed on mobile browsers.
+    setTimeout(() => scrollToRoute(normalizedHref, "smooth"), 420);
+  } else {
+    scrollToRoute(normalizedHref, "smooth");
+  }
+});
 
 window.addEventListener("popstate", () => {
   scrollToRoute(window.location.pathname, "auto");
 });
 
 window.addEventListener("load", () => {
-  bindRouteLinks();
   scrollToRoute(window.location.pathname, "auto");
 });
 </script>
