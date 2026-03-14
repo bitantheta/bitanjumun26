@@ -36,13 +36,13 @@
   <!-- ================= NAVBAR ================= -->
 <nav class="navbar">
   <div class="nav-right desktop-nav">
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/committees">Committees</a>
-    <a href="/coming-soon">Secretariat</a>
-    <a href="/resources">Resources</a>
-    <a href="/blogs">Blogs</a>
-    <a href="/contact">Contact Us</a>
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#committees">Committees</a>
+    <a href="coming-soon.html">Secretariat</a>
+    <a href="#resources">Resources</a>
+    <a href="#blogs">Blogs</a>
+    <a href="#contact">Contact Us</a>
   </div>
 
   <!-- Hamburger -->
@@ -55,13 +55,13 @@
 
 <!-- Mobile menu -->
 <div class="mobile-menu">
-  <a href="/">Home</a>
-  <a href="/about">About</a>
-  <a href="/committees">Committees</a>
-  <a href="/coming-soon">Secretariat</a>
-  <a href="/resources">Resources</a>
-  <a href="/blogs">Blogs</a>
-  <a href="/contact">Contact Us</a>
+  <a href="#hero">Home</a>
+  <a href="#about">About</a>
+  <a href="#committees">Committees</a>
+  <a href="coming-soon.html">Secretariat</a>
+  <a href="#resources">Resources</a>
+  <a href="#blogs">Blogs</a>
+  <a href="#contact">Contact Us</a>
 </div>
 
 
@@ -857,65 +857,6 @@ function startIntro() {
 // Auto start when page loads
 window.addEventListener("load", () => {
   setTimeout(startIntro, 400);
-});
-</script>
-
-<script>
-const routeMap = {
-  "/": "hero",
-  "/about": "about",
-  "/committees": "committees",
-  "/resources": "resources",
-  "/blogs": "blogs",
-  "/contact": "contact"
-};
-
-function normalizeRoute(path) {
-  if (!path) return "/";
-  const trimmed = path.trim().toLowerCase();
-  if (trimmed === "/") return "/";
-  return trimmed.replace(/\/+$/, "");
-}
-
-function scrollToRoute(pathname, behavior = "auto") {
-  const route = normalizeRoute(pathname);
-  const sectionId = routeMap[route];
-  if (!sectionId) return;
-
-  const section = document.getElementById(sectionId);
-  if (!section) return;
-
-  section.scrollIntoView({ behavior, block: "start" });
-}
-
-function bindCleanRouteLinks() {
-  document.querySelectorAll("a[href^='/']").forEach(link => {
-    link.addEventListener("click", event => {
-      const href = link.getAttribute("href");
-      const route = normalizeRoute(href);
-
-      if (!(route in routeMap)) return;
-
-      event.preventDefault();
-      history.pushState({}, "", route);
-
-      const clickedFromMobileMenu = !!link.closest(".mobile-menu");
-      if (clickedFromMobileMenu) {
-        setTimeout(() => scrollToRoute(route, "smooth"), 320);
-      } else {
-        scrollToRoute(route, "smooth");
-      }
-    });
-  });
-}
-
-window.addEventListener("popstate", () => {
-  scrollToRoute(window.location.pathname, "auto");
-});
-
-window.addEventListener("load", () => {
-  bindCleanRouteLinks();
-  scrollToRoute(window.location.pathname, "auto");
 });
 </script>
 
