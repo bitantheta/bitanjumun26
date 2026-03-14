@@ -870,8 +870,16 @@ const routeMap = {
   "/contact": "contact"
 };
 
+function normalizeRoute(path) {
+  if (!path) return "/";
+  const trimmed = path.trim().toLowerCase();
+  if (trimmed === "/") return "/";
+  return trimmed.replace(/\/+$/, "");
+}
+
 function scrollToRoute(pathname, behavior = "auto") {
-  const sectionId = routeMap[pathname];
+  const normalizedPath = normalizeRoute(pathname);
+  const sectionId = routeMap[normalizedPath];
   if (!sectionId) return;
 
   const section = document.getElementById(sectionId);
@@ -884,11 +892,12 @@ function bindRouteLinks() {
   document.querySelectorAll("a[href^='/']").forEach(link => {
     link.addEventListener("click", event => {
       const href = link.getAttribute("href");
-      if (!href || !(href in routeMap)) return;
+      const normalizedHref = normalizeRoute(href);
+      if (!href || !(normalizedHref in routeMap)) return;
 
       event.preventDefault();
-      history.pushState({}, "", href);
-      scrollToRoute(href, "smooth");
+      history.pushState({}, "", normalizedHref);
+      scrollToRoute(normalizedHref, "smooth");
     });
   });
 }
