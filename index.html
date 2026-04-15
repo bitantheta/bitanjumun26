@@ -77,6 +77,8 @@
         src="assets/images/emblem.png"
         alt="Jadavpur University MUN Logo"
         class="hero-logo"
+        fetchpriority="high"
+        decoding="async"
       />
 
       <!-- DATE + CTA OVERLAY (MOVED INSIDE WRAPPER) -->
@@ -128,42 +130,42 @@ Since its inception in 2015, Jadavpur University Model United Nations (JUMUN) ha
   <div class="committees-grid">
 
     <div class="committee-card">
-      <img src="assets/images/SPECPOL.jpeg" alt="SPECPOL">
+      <img src="assets/images/SPECPOL.jpeg" alt="SPECPOL" loading="lazy" decoding="async">
       <a href="#" class="committee-btn" data-committee="specpol">KNOW MORE ↗</a>
     </div>
 
     <div class="committee-card">
-      <img src="assets/images/ECOSOC.jpeg" alt="ECOSOC">
+      <img src="assets/images/ECOSOC.jpeg" alt="ECOSOC" loading="lazy" decoding="async">
       <a href="#" class="committee-btn" data-committee="ecosoc">KNOW MORE ↗</a>
     </div>
 
     <div class="committee-card">
-      <img src="assets/images/CSW.jpeg" alt="CSW">
+      <img src="assets/images/CSW.jpeg" alt="CSW" loading="lazy" decoding="async">
       <a href="#" class="committee-btn" data-committee="csw">KNOW MORE ↗</a>
     </div>
 
     <div class="committee-card">
-      <img src="assets/images/ISA.jpeg" alt="ISA">
+      <img src="assets/images/ISA.jpeg" alt="ISA" loading="lazy" decoding="async">
       <a href="#" class="committee-btn" data-committee="isa">KNOW MORE ↗</a>
     </div>
 
     <div class="committee-card">
-      <img src="assets/images/AIPPM.jpeg" alt="AIPPM">
+      <img src="assets/images/AIPPM.jpeg" alt="AIPPM" loading="lazy" decoding="async">
       <a href="#" class="committee-btn" data-committee="aippm">KNOW MORE ↗</a>
     </div>
 
     <div class="committee-card">
-      <img src="assets/images/IP.jpeg" alt="IP">
+      <img src="assets/images/IP.jpeg" alt="IP" loading="lazy" decoding="async">
       <a href="#" class="committee-btn" data-committee="ip">KNOW MORE ↗</a>
     </div>
 
     <div class="committee-card">
-      <img src="assets/images/SSC.jpeg" alt="SSC">
+      <img src="assets/images/SSC.jpeg" alt="SSC" loading="lazy" decoding="async">
       <a href="#" class="committee-btn" data-committee="ssc">KNOW MORE ↗</a>
     </div>
 
     <div class="committee-card">
-      <img src="assets/images/ODC.jpeg" alt="UNODC">
+      <img src="assets/images/ODC.jpeg" alt="UNODC" loading="lazy" decoding="async">
       <a href="#" class="committee-btn" data-committee="unodc">KNOW MORE ↗</a>
     </div>
 
@@ -177,7 +179,7 @@ Since its inception in 2015, Jadavpur University Model United Nations (JUMUN) ha
 
   <div class="resources-grid">
     <article class="resource-card">
-      <img src="assets/images/parti.png" alt="Delegate Brochure Poster" class="resource-poster" />
+      <img src="assets/images/parti.png" alt="Delegate Brochure Poster" class="resource-poster" loading="lazy" decoding="async" />
       <div class="resource-info">
         <h3>JUMUN Participation Brochure</h3>
         <p> Get all the essential information about participating in JUMUN 2026 as a delegate.</p>
@@ -186,7 +188,7 @@ Since its inception in 2015, Jadavpur University Model United Nations (JUMUN) ha
     </article>
 
     <article class="resource-card">
-      <img src="assets/images/insti.png" alt="Committee Brochure Poster" class="resource-poster" />
+      <img src="assets/images/insti.png" alt="Committee Brochure Poster" class="resource-poster" loading="lazy" decoding="async" />
       <div class="resource-info">
         <h3>JUMUN Institutional Brochure</h3>
         <p> Get all the essential information about participating in JUMUN 2026 as an Institution.</p>
@@ -195,7 +197,7 @@ Since its inception in 2015, Jadavpur University Model United Nations (JUMUN) ha
     </article>
 
     <article class="resource-card">
-      <img src="assets/images/study-guides.png" alt="Study Guides Poster" class="resource-poster" />
+      <img src="assets/images/study-guides.png" alt="Study Guides Poster" class="resource-poster" loading="lazy" decoding="async" />
       <div class="resource-info">
         <h3>JUMUN Study Guides</h3>
         <p> Access the study guides for all the committees at JUMUN 2026 here. </p>
@@ -368,7 +370,7 @@ The UNODC in JUMUN 2026 requires a nuanced understanding of the complex social, 
 
    <div class="blog-card">
 
-      <img src="assets/images/blog4.jpg" alt="Blog Cover">
+      <img src="assets/images/blog4.jpg" alt="Blog Cover" loading="lazy" decoding="async">
 
       <div class="blog-info">
 
@@ -388,7 +390,7 @@ The UNODC in JUMUN 2026 requires a nuanced understanding of the complex social, 
    
     <div class="blog-card">
 
-      <img src="assets/images/blog3.jpg" alt="Blog Cover">
+      <img src="assets/images/blog3.jpg" alt="Blog Cover" loading="lazy" decoding="async">
 
       <div class="blog-info">
 
@@ -408,7 +410,7 @@ The UNODC in JUMUN 2026 requires a nuanced understanding of the complex social, 
 
     <div class="blog-card">
 
-      <img src="assets/images/blog1.jpg" alt="Blog Cover">
+      <img src="assets/images/blog1.jpg" alt="Blog Cover" loading="lazy" decoding="async">
 
       <div class="blog-info">
 
@@ -428,7 +430,7 @@ The UNODC in JUMUN 2026 requires a nuanced understanding of the complex social, 
 
     <div class="blog-card">
 
-  <img src="assets/images/blog2.jpg" alt="Blog Cover">
+  <img src="assets/images/blog2.jpg" alt="Blog Cover" loading="lazy" decoding="async">
 
   <div class="blog-info">
 
@@ -851,34 +853,40 @@ resourceModal.addEventListener("click", e => {
 <script>
 const introScreen = document.getElementById("introScreen");
 const introText = document.getElementById("introText");
+const heroLogoWrapper = document.querySelector(".hero-logo-wrapper");
 
 const words = ["#", "Resolve", "To", "Rebuild"];
+const WORD_STAGGER_SECONDS = 0.35;
+const WORD_REVEAL_SECONDS = 0.8;
+const EXIT_BUFFER_SECONDS = 0.3;
+const SLIDE_OUT_MS = 650;
 
 function startIntro() {
+  if (!introScreen || !introText) return;
 
   words.forEach((word, i) => {
     const span = document.createElement("span");
     span.textContent = word;
     span.classList.add("intro-word");
-    span.style.animationDelay = `${i * 0.6}s`;
+    span.style.animationDelay = `${i * WORD_STAGGER_SECONDS}s`;
     introText.appendChild(span);
   });
 
   // Slide screen out after full animation
-  const totalDuration = words.length * 0.6 + 1.2;
+  const totalDuration = (words.length - 1) * WORD_STAGGER_SECONDS + WORD_REVEAL_SECONDS + EXIT_BUFFER_SECONDS;
 
   setTimeout(() => {
     introScreen.classList.add("slide-out");
     setTimeout(() => {
-    introScreen.remove();
-    document.querySelector(".hero-logo-wrapper").classList.add("reveal");
-  }, 1200);
+      introScreen.remove();
+      if (heroLogoWrapper) heroLogoWrapper.classList.add("reveal");
+    }, SLIDE_OUT_MS);
   }, totalDuration * 1000);
 }
 
-// Auto start when page loads
-window.addEventListener("load", () => {
-  setTimeout(startIntro, 400);
+// Start as soon as DOM is ready; don't wait for all images to finish downloading.
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(startIntro, 120);
 });
 </script>
 
