@@ -193,6 +193,15 @@ Since its inception in 2015, Jadavpur University Model United Nations (JUMUN) ha
         <a href="#" class="resource-btn" data-resource="brochure2">SEE BROCHURE ↗</a>
       </div>
     </article>
+
+    <article class="resource-card">
+      <img src="assets/images/study-guides.png" alt="Study Guides Poster" class="resource-poster" />
+      <div class="resource-info">
+        <h3>JUMUN Study Guides</h3>
+        <p> Access the study guides for all the committees at JUMUN 2026 here. </p>
+        <a href="#" class="resource-btn resource-link-btn" data-drive-link="https://drive.google.com/drive/folders/18vPZefR76ASbM-m-1T7Aie-h5CTdAxZi">ACCESS GUIDES ↗</a>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -775,7 +784,8 @@ const resourceFrame = document.getElementById("resourceFrame");
 const resourceOpenNew = document.getElementById("resourceOpenNew");
 const resourceDownload = document.getElementById("resourceDownload");
 
-document.querySelectorAll(".resource-btn").forEach(btn => {
+// Handle PDF brochure buttons
+document.querySelectorAll(".resource-btn:not(.resource-link-btn)").forEach(btn => {
   btn.addEventListener("click", e => {
     e.preventDefault();
 
@@ -791,6 +801,17 @@ document.querySelectorAll(".resource-btn").forEach(btn => {
     resourceDownload.href = pdfPath;
 
     resourceModal.classList.add("active");
+  });
+});
+
+// Handle direct link buttons (Study Guides, etc.)
+document.querySelectorAll(".resource-link-btn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+    const driveLink = btn.dataset.driveLink;
+    if (driveLink) {
+      window.open(driveLink, "_blank");
+    }
   });
 });
 
