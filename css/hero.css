@@ -4,238 +4,42 @@ html, body {
 }
 
 /* =====================
-   HERO SECTION (UPDATED RESPONSIVE)
+   HERO SECTION
 ===================== */
 .hero {
   position: relative;
-
   min-height: 100dvh;
-  height: 100dvh;
-
   width: 100%;
-
   background-image: url("../assets/images/hero-bg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   overflow: hidden;
+  animation: bgDrift 20s ease-in-out infinite alternate;
 }
 
-/* =====================
-   HERO CONTENT
-===================== */
 .hero-content {
   position: relative;
   z-index: 2;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
+  gap: 0;
+  padding: clamp(4.5rem, 9vh, 6rem) 1.25rem 2rem;
 }
 
-/* =====================
-   TITLE (UNCHANGED)
-===================== */
-.hero-title {
-  font-size: 2.4rem;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-}
-
-.hero-title span {
-  display: block;
-  font-size: 2.9rem;
-  font-weight: 700;
-
-  background: linear-gradient(90deg, #ff7aa2, #a77bff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-
-
-
-
-/* =====================
-   LOGO STACK (UPDATED)
-===================== */
 .hero-logo-wrapper {
-  position: relative;
-  width: clamp(300px, 80vw, 1100px);
-}
-
-/* =========================
-   DATE + BUTTON OVERLAY
-========================= */
-
-.hero-overlay-content {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-
-  top: 80%;          /* 🔥 controls distance from top of logo */
-  
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  gap: 8px;          /* controls spacing between date and button */
-  text-align: center;
-}
-/* Date */
-.hero-date-text {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(28px, 4vw, 52px);
-  font-weight: 700;
-  color: #9a123f;
-}
-
-/* Button tweak */
-.hero-cta {
-  padding: 16px 60px;
-}
-
-
-.hero-logo-bg,
-.hero-logo {
-  position: relative;
-  width: 100%;
-  height: auto;
-}
-
-.hero-logo-bg { z-index: 1; }
-.hero-logo    { z-index: 2; }
-
-.hero-logo {
-  display: block;
-}
-
-/* =====================
-   CTA BUTTON (FLOW fBASED)
-===================== */
-.hero-cta {
-  font-family: 'Montserrat', sans-serif;
-
-  padding: 18px 64px;
-  border-radius: 60px;
-
-  font-size: clamp(16px, 2vw, 22px);
-  font-weight: 800;
-  letter-spacing: 1px;
-
-  color: #ffffff;
-  background: linear-gradient(90deg, #e44369, #e44369);
-
-  box-shadow:
-    0 10px 35px rgba(255, 79, 139, 0.55),
-    0 0 60px rgba(255, 79, 139, 0.6);
-
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.hero-cta:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 15px 50px rgba(255, 79, 139, 0.8),
-    0 0 90px rgba(255, 79, 139, 0.8);
-}
-
-
-/* =====================
-   DATE TEXT (NOW FLOW BASED)
-===================== */
-.hero-date-text {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(24px, 4vw, 48px);
-  font-weight: 600;
-  color:  #e44369;
-
-  white-space: nowrap;
-}
-
-
-/* =====================
-   MOBILE FIX (UNCHANGED BLOCK)
-===================== */
-@media (max-width: 768px) {
-  .about-container {
-    min-height: auto;
-    padding: 3rem 1rem;
-  }
-
-  .content-wrapper {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
-  }
-
-  .text-container h1 {
-    font-size: 36px;
-  }
-
-  .text-container h2 {
-    font-size: 20px;
-  }
-
-  .img {
-    max-width: 360px;
-  }
-
-  .about-a {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-logo-wrapper {
-    position: relative;
-    width: 300vw;
-    max-width: 800px;
-  }
-
-  /* 🔥 REMOVE OVERLAY LOGIC ON MOBILE */
-  .hero-overlay-content {
-    position: static;       /* no absolute */
-    transform: none;
-  }
-
-  .hero-date-text {
-    font-size: 28px;
-    text-align: center;
-  }
-
-  .hero-cta {
-    width: 90%;
-    max-width: 300px;
-    padding: 14px 20px;
-    font-size: 15px;
-    margin: 14px auto 0 auto;
-    white-space: normal;
-  }
-
-}
-
-.hero-logo-wrapper {
+  gap: 0;
+  width: min(92vw, 1100px);
   opacity: 0;
-  transform: scale(0.92);
-  transition: all 1.2s cubic-bezier(.77,0,.18,1);
+  transform: scale(0.98);
+  transition: opacity 1.2s cubic-bezier(.77,0,.18,1), transform 1.2s cubic-bezier(.77,0,.18,1);
 }
 
 .hero-logo-wrapper.reveal {
@@ -243,54 +47,14 @@ html, body {
   transform: scale(1);
 }
 
-@media (max-width: 768px) {
-
-  .hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-logo-wrapper {
-    position: relative;
-    width: 200vw;         /* responsive and stable */
-    max-width: 700px;
-  }
-
-  .hero-overlay-content {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 80%;            /* 🔥 controls gap from logo */
-    gap: 6px;
-  }
-
-  .hero-cta {
-    width: 85%;
-    max-width: 280px;
-    padding: 14px 18px;
-    font-size: 14px;
-  }
-
-}
-
 .hero-logo {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
-
-  -webkit-mask-image: linear-gradient(to bottom, 
-      rgba(0,0,0,0) 0%, 
-      rgba(0,0,0,1) 25%
-  );
-  mask-image: linear-gradient(to bottom, 
-      rgba(0,0,0,0) 0%, 
-      rgba(0,0,0,1) 25%
-  );
-}
-
-.hero {
-  animation: bgDrift 20s ease-in-out infinite alternate;
+  max-height: min(84dvh, 1200px);
+  object-fit: contain;
+  transform: scale(1.26);
+  transform-origin: top center;
 }
 
 @keyframes bgDrift {
@@ -298,12 +62,18 @@ html, body {
   100% { background-position: center 5%; }
 }
 
-.hero-overlay-content {
-  position: absolute;
-  z-index: 5;   /* make sure button is on top */
-}
+@media (max-width: 768px) {
+  .hero-content {
+    gap: 0;
+    padding: 4rem 1rem 1.5rem;
+  }
 
-.hero-cta {
-  position: relative;
-  z-index: 6;
+  .hero-logo-wrapper {
+    width: min(96vw, 820px);
+  }
+
+  .hero-logo {
+    max-height: min(66dvh, 760px);
+    transform: scale(1.18);
+  }
 }
